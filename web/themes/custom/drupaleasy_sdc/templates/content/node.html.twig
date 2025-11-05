@@ -96,3 +96,37 @@
   </div>
 
 </article>
+
+
+
+
+
+
+
+{# {% set chip_content %}
+  Type: <strong>{{ node.bundle() }}</strong>
+{% endset %}
+
+{{ include('drupaleasy_sdc:chip', {
+  color: 'primary',
+  dismissible: true,
+  content: chip_content,
+}, with_context = false)}} #}
+
+{# {% include 'drupaleasy_sdc:chip' with {
+  color: 'primary',
+  dismissible: true,
+  content: chip_content,
+} only %} #}
+
+
+
+{# {% embed 'drupaleasy_sdc:chip' with {
+  color: 'primary',
+  dismissible: true,
+  node: node,
+} only %}
+  {% block content %}
+    Type: <strong>{{ node.bundle() }}</strong>
+  {% endblock %}
+{% endembed %} #}
