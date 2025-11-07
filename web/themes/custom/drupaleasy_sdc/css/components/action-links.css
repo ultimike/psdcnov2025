@@ -41,3 +41,8 @@
   padding-right: 0;
   padding-left: 0.2em;
 }
+
+
+:root {
+  --primary-color: #BFD63A;
+}
