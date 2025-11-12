@@ -1,0 +1,42 @@
+name: Spaceflight VIP
+group: DrupalEasy
+description: "A compact author/profile card with a spaceflight aesthetic. Uses a slot for an avatar (raw HTML allowed) and props for name, title, bio, and social links."
+status: stable
+props:
+  type: object
+  properties:
+    name:
+      type: string
+      title: "Author full name"
+      default: "Author Name"
+    title:
+      type: string
+      title: "Author title or role"
+      default: "Author"
+    bio:
+      type: string
+      title: "Short biography (under 50 words)"
+      default: "I write about space exploration and the future of humanity."
+    social:
+      type: object
+      title: "Social links object. Provide URLs for supported networks."
+      properties:
+        x:
+          type: string
+          title: "X (Twitter) profile URL"
+        mastodon:
+          type: string
+          title: "Mastodon profile URL"
+        threads:
+          type: string
+          title: "Threads profile URL"
+        bluesky:
+          type: string
+          title: "Bluesky profile URL"
+        linkedin:
+          type: string
+          title: "LinkedIn profile URL"
+slots:
+  avatar:
+    title: "Avatar"
+    description: "Slot for raw avatar HTML (for example: an <img> tag). Rendered with |raw in the template."

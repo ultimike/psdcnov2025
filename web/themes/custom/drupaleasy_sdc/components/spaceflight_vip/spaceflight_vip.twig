@@ -1,0 +1,86 @@
+{# spaceflight_vip.twig #}
+{#
+  Expected variables:
+    - name (string)
+    - title (string)
+    - bio (string)
+    - social (object): x, mastodon, threads, bluesky, linkedin
+    - avatar (string) : raw HTML for the avatar slot (e.g. '<img .../>')
+    - attributes : optional Drupal attributes object (we add classes)
+#}
+
+{%- set classes = [
+  'spaceflight-vip',
+] -%}
+
+  <article {{ attributes.addClass(classes) }} role="region" aria-label="Author profile: {{ name|e }}"> <div class="spaceflight-vip__inner">
+    <div class="spaceflight-vip__left">
+      <div
+        class="spaceflight-vip__avatar" aria-hidden="false">
+        {# Avatar slot accepts raw HTML; if none provided we show a CSS placeholder #}
+        {% if avatar is defined %}
+          {{ avatar }}
+        {% else %}
+          <div class="spaceflight-vip__avatar--placeholder" aria-hidden="true"></div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="spaceflight-vip__right">
+      <h2 class="spaceflight-vip__name">{{ name }}</h2>
+      <div class="spaceflight-vip__title">{{ title }}</div>
+
+      <p class="spaceflight-vip__bio">{{ bio }}</p>
+
+      <hr class="spaceflight-vip__rule"/>
+
+      <nav class="spaceflight-vip__social" aria-label="Author social links">
+        {% if social.x %}
+          <a href="{{ social.x }}" class="social social--x" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+            <span class="social__glyph" aria-hidden="true">X</span>
+            <span class="sr-only">X</span>
+          </a>
+        {% endif %}
+        {% if social.mastodon %}
+          <a href="{{ social.mastodon }}" class="social social--mastodon" target="_blank" rel="noopener noreferrer" aria-label="Mastodon">
+            <span class="social__glyph" aria-hidden="true">Ⓜ</span>
+            <span class="sr-only">Mastodon</span>
+          </a>
+        {% endif %}
+        {% if social.threads %}
+          <a href="{{ social.threads }}" class="social social--threads" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+            <span class="social__glyph" aria-hidden="true">⟲</span>
+            <span class="sr-only">Threads</span>
+          </a>
+        {% endif %}
+        {% if social.bluesky %}
+          <a href="{{ social.bluesky }}" class="social social--bluesky" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
+            <span class="social__glyph" aria-hidden="true">🌊</span>
+            <span class="sr-only">Bluesky</span>
+          </a>
+        {% endif %}
+        {% if social.linkedin %}
+          <a href="{{ social.linkedin }}" class="social social--linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <span class="social__glyph" aria-hidden="true">in</span>
+            <span class="sr-only">LinkedIn</span>
+          </a>
+        {% endif %}
+      </nav>
+    </div>
+  </div>
+</article>
+
+{# Small screen accessible-only text style #}
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0
+  }
+</style>

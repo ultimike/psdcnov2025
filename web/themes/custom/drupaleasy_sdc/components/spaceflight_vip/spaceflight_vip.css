@@ -1,0 +1,268 @@
+/* spaceflight_vip.pcss.css
+   PostCSS nesting allowed.
+   Scoped under [data-component-id="drupaleasy_sdc:spaceflight_vip"]
+*/
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] {
+  /* margin around the whole card */
+  margin: 1rem;
+  max-width: 31.25rem;
+  display: block;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #efeae2;
+  background: linear-gradient(180deg, #071426 0%, #071a2a 55%, #032033 100%);
+  border-radius: 0.875rem;
+  padding: 1.1rem;
+  box-sizing: border-box;
+  box-shadow:
+    0 6px 18px rgba(2,6,12,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+/* decorative starfield using pseudo-elements (pure CSS) */
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"]::before,
+[data-component-id="drupaleasy_sdc:spaceflight_vip"]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"]::before {
+  /* more prominent speckled stars with varied sizes */
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,0.95) 1px, transparent 1.2px),
+    radial-gradient(circle at 80% 10%, rgba(255,255,255,0.9) 1.2px, transparent 1.4px),
+    radial-gradient(circle at 50% 60%, rgba(255,255,255,0.85) 0.8px, transparent 1px),
+    radial-gradient(circle at 25% 75%, rgba(255,255,255,0.8) 0.6px, transparent 0.8px),
+    radial-gradient(circle at 90% 85%, rgba(255,255,255,0.9) 1px, transparent 1.2px),
+    radial-gradient(circle at 15% 45%, rgba(255,255,255,0.75) 0.7px, transparent 0.9px),
+    radial-gradient(circle at 65% 30%, rgba(255,255,255,0.85) 0.9px, transparent 1.1px),
+    radial-gradient(circle at 40% 90%, rgba(255,255,255,0.8) 0.8px, transparent 1px);
+  background-repeat: repeat;
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"]::after {
+  /* additional layer of smaller, dimmer stars for depth */
+  background-image:
+    radial-gradient(circle at 30% 15%, rgba(255,255,255,0.6) 0.4px, transparent 0.5px),
+    radial-gradient(circle at 70% 40%, rgba(255,255,255,0.5) 0.3px, transparent 0.4px),
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.55) 0.35px, transparent 0.45px),
+    radial-gradient(circle at 85% 55%, rgba(255,255,255,0.5) 0.3px, transparent 0.4px),
+    radial-gradient(circle at 45% 25%, rgba(255,255,255,0.6) 0.4px, transparent 0.5px);
+  background-repeat: repeat;
+  opacity: 0.25;
+  mix-blend-mode: screen;
+}
+
+/* inner layout uses flex */
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__inner {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1; /* above the decorative stars */
+}
+
+/* left column: avatar area */
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__left {
+  flex: 0 0 36%;
+  min-width: 6.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* avatar container: fixed aspect circular */
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__avatar {
+  width: 6.875rem;
+  height: 6.875rem;
+  border-radius: 62.4375rem;
+  padding: 0.375rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.06));
+  box-shadow: 0 4px 10px rgba(0,0,0,0.45), inset 0 -4px 8px rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 3px solid rgba(255,255,255,0.04);
+}
+
+/* if user provided an <img> tag, ensure it fits the circular container */
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__avatar img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+  border-radius: 62.4375rem;
+  vertical-align: middle;
+}
+
+/* placeholder avatar when no img is provided */
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__avatar--placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 62.4375rem;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,0.06) 6%, transparent 7%),
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.14));
+  display: block;
+}
+
+/* right column: content */
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__right {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-top: 0.25rem;
+}
+
+/* name/title/bio */
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__name {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  color: #f6efe6;
+}
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__title {
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  color: rgba(246,239,230,0.85);
+}
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__bio {
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+  color: rgba(246,239,230,0.95);
+  font-size: 1.05rem;
+  line-height: 1.3;
+  max-width: 100%;
+}
+
+/* thin rule */
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__rule {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  margin: 0.75rem 0;
+}
+
+/* social links row */
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__social {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+/* base social button */
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.625rem;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.02);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #efeae2;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+/* glyph centering */
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .social__glyph {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* hover & focus effect */
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .social:hover,
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .social:focus {
+  transform: translateY(-0.1875rem);
+  box-shadow: 0 6px 18px rgba(1,4,8,0.45);
+  outline: none;
+}
+
+/* individual social brand accents (pure CSS + unicode glyphs) */
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .social--x {
+  background: linear-gradient(180deg,#0b2230 0%, #071826 100%);
+  border-radius: 0.5rem;
+  font-family: Georgia, serif;
+  letter-spacing: 0.02em;
+}
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .social--mastodon {
+  background: linear-gradient(180deg,#2b2f45 0%, #1f2131 100%);
+  border-radius: 0.5rem;
+}
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .social--threads {
+  background: linear-gradient(180deg,#11131b 0%, #0b0f14 100%);
+  border-radius: 0.5rem;
+}
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .social--bluesky {
+  background: linear-gradient(180deg,#0c2b3c 0%, #06202a 100%);
+  border-radius: 0.5rem;
+}
+
+[data-component-id="drupaleasy_sdc:spaceflight_vip"] .social--linkedin {
+  background: linear-gradient(180deg,#12202a 0%, #07121a 100%);
+  border-radius: 0.5rem;
+}
+
+/* responsive: stack on narrow screens */
+
+@media (max-width: 26.25rem) {
+  [data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  [data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__left {
+    flex: 0 0 auto;
+  }
+
+  [data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__right {
+    padding-top: 0.5rem;
+  }
+
+  [data-component-id="drupaleasy_sdc:spaceflight_vip"] .spaceflight-vip__bio {
+    font-size: 1rem;
+  }
+
+  [data-component-id="drupaleasy_sdc:spaceflight_vip"] .social {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}

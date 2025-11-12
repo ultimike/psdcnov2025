@@ -1,0 +1,26 @@
+name: Block quote left
+status: stable
+description: A two-column layout with a blockquote on the left and flexible content on the right.
+group: DrupalEasy
+props:
+  type: object
+  properties:
+    quote:
+      type: string
+      title: Quote
+      description: The quote text to display in the left column blockquote.
+      examples:
+        - "The best way to predict the future is to invent it."
+        - "In the middle of difficulty lies opportunity."
+    left_width:
+      type: integer
+      title: Left column width
+      description: The width of the left column as a percentage (e.g., 30 for 30%).
+      examples:
+        - 30
+        - 40
+        - 25
+slots:
+  content:
+    title: Content
+    description: The main content to display in the right column.

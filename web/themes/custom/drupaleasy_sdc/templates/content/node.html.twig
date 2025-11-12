@@ -103,15 +103,20 @@
 
 
 
-{# {% set chip_content %}
-  Type: <strong>{{ node.bundle() }}</strong>
+
+
+{% set chip_output %}
+  {% set chip_content %}
+    Type: <strong>{{ node.bundle() }}</strong>
+  {% endset %}
+
+  {{ include('drupaleasy_sdc:chip', {
+    color: 'primary',
+    dismissible: true,
+    content: chip_content,
+  }, with_context = false)}}
 {% endset %}
 
-{{ include('drupaleasy_sdc:chip', {
-  color: 'primary',
-  dismissible: true,
-  content: chip_content,
-}, with_context = false)}} #}
 
 {# {% include 'drupaleasy_sdc:chip' with {
   color: 'primary',
@@ -130,3 +135,27 @@
     Type: <strong>{{ node.bundle() }}</strong>
   {% endblock %}
 {% endembed %} #}
+
+{% set spaceflight_vip_output %}
+  {{ include('drupaleasy_sdc:spaceflight_vip', {
+    name: 'Ada Lovelace',
+    title: 'Astro Writer',
+    bio: 'I write about space exploration and the future of humanity.',
+    social: {
+      x: 'https://x.com/adalovelace',
+      mastodon: 'https://mastodon.social/@adalovelace',
+      threads: 'https://www.threads.net/@adalovelace',
+      bluesky: 'https://bsky.app/profile/adalovelace',
+      linkedin: 'https://www.linkedin.com/in/adalovelace'
+    },
+  avatar: content.field_vip_image
+  }, with_context = false) }}
+{% endset %}
+
+<br/><br/>
+
+{{ include('drupaleasy_sdc:two_columns', {
+    left_column_percentage_width: 50,
+    left_content: chip_output,
+    right_content: spaceflight_vip_output,
+  }, with_context = false)}}
