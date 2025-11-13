@@ -6,6 +6,7 @@
     display: table;
     max-width: 100%;
     overflow: hidden;
+    min-width: 12.5rem;
   }
 figure.rounded-corners[data-component-id="drupaleasy_sdc:figure"] {
     border-radius: 0.75rem;

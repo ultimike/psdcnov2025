@@ -6,6 +6,7 @@
     display: table;
     max-width: 100%;
     overflow: hidden;
+    min-width: 200px;
   }
 
   &figure.rounded-corners {
